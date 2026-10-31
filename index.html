@@ -97,7 +97,7 @@ button{font:inherit;color:inherit;cursor:pointer;background:none;border:0;paddin
 .eq.l{left:2%;width:36%}.eq.r{right:2%;width:36%}
 .eq i{flex:1;max-width:6px;height:100%;background:repeating-linear-gradient(0deg,rgba(255,255,255,.95) 0 4px,transparent 4px 8px);transform-origin:bottom;transform:scaleY(var(--h));animation:eq 2.6s ease-in-out infinite alternate;animation-delay:var(--d);opacity:.9}
 @keyframes eq{to{transform:scaleY(calc(var(--h)*.5))}}
-.fig{position:absolute;left:50%;bottom:0;height:86%;width:auto;max-width:none;transform:translateX(-50%);-webkit-mask:radial-gradient(62% 78% at 50% 34%,#000 66%,transparent 100%);mask:radial-gradient(62% 78% at 50% 34%,#000 66%,transparent 100%);filter:drop-shadow(0 30px 40px rgba(6,17,31,.25));animation:figIn 1.4s .3s cubic-bezier(.2,.7,.2,1) both}
+.fig{position:absolute;left:50%;bottom:0;height:86%;width:auto;max-width:none;transform:translateX(-50%);animation:figIn 1.4s .3s cubic-bezier(.2,.7,.2,1) both}
 @keyframes figIn{from{opacity:0;transform:translate(-50%,40px)}}
 .fade{position:absolute;left:0;right:0;bottom:0;height:12%;background:linear-gradient(180deg,transparent,var(--bg))}
 .float{position:absolute;z-index:3;width:260px;padding:14px;border-radius:16px;text-align:left;color:var(--ink);background:rgba(255,255,255,.94);border:1px solid var(--line);box-shadow:0 30px 60px -24px rgba(11,30,52,.35);backdrop-filter:blur(10px);animation:bob 7s ease-in-out infinite,up 1s .9s both}
