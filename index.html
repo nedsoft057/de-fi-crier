@@ -207,7 +207,7 @@ button{font:inherit;color:inherit;cursor:pointer;background:none;border:0;paddin
 .st h3{font-family:var(--serif);font-weight:400;font-size:clamp(30px,2.8vw,38px);line-height:1.05;margin:12px 0 10px;letter-spacing:-.015em}
 .st p{color:var(--mute);font-size:15.5px}
 .st a{display:inline-flex;margin-top:16px;font-size:14px;color:var(--c-2);gap:6px;font-weight:500}
-.st a:hover{text-decoration:underline}
+.st a:hover{text-decoration:underline}.st .lk{display:flex;flex-wrap:wrap;align-items:center;gap:6px 20px;margin-top:16px}.st .lk a{margin-top:0;align-items:center}.st .ghl{color:var(--mute)}.st .ghl:hover{color:var(--c-2)}
 .st .mimg{display:none}
 @media (max-width:900px){
   .builds{grid-template-columns:1fr;gap:0}.screen{display:none}.steps{padding:0}
@@ -453,12 +453,12 @@ const WORK=[
  ["orion","Launch",0,"Orion Agent Store","The live agent marketplace, broken down: build, deploy, earn.","https://x.com/favour_D_crier/status/2088006638535922101","orion-agent-store"],
  ["orion","Ecosystem",0,"Orion partners with Termux","How autonomous agents can find jobs, accept tasks and work together.","https://x.com/favour_D_crier/status/2088459794277388592","orion-termux"]];
 const BUILDS=[
- ["whale-tracker","Hyperliquid · GoldRush","Whale Tracker","Tracks Hyperliquid whales with accumulation trends and live position data.","https://x.com/favour_D_crier/status/2070228310655635956","goldrush-whale-tracker"],
- ["h3-pro","HIP-3 markets","H3-Pro","A market dashboard for HIP-3: funding, dominance, volume and top movers.","https://x.com/favour_D_crier/status/2070589267194122530","goldrush-h3-pro"],
- ["rwa-perps","RWA perps","RWA / Perps Dashboard","A market view of RWA perps activity: winners, losers and volume.","https://x.com/favour_D_crier/status/2077728698963231051","goldrush-rwa-perps"],
- ["sk-hynix","Pre-IPO market","SK Hynix Pre-IPO Dashboard","Live tracking for a synthetic SK Hynix pre-IPO perp on Hyperliquid.","https://x.com/favour_D_crier/status/2076520399634899390","goldrush-sh-dashboard"],
- ["spacex-research","Onchain research","Who got into tokenized SpaceX?","Wallet-level research on tokenized SpaceX holders across chains.","https://x.com/favour_D_crier/status/2069037906287530262","goldrush-spacex"],
- ["kol-manager","Tool · Orion","KOL Manager Suite","An operations suite for ambassador programs: dashboards for ambassadors and leads, plus team chat.","https://github.com/nedsoft057/orion-agents","kol-manager-02-lead-dashboards"]];
+ ["whale-tracker","Hyperliquid · GoldRush","Whale Tracker","Tracks Hyperliquid whales with accumulation trends and live position data.","https://x.com/favour_D_crier/status/2070228310655635956","goldrush-whale-tracker","https://github.com/nedsoft057/hyperliquid-whale-tracker-dashboard"],
+ ["sk-hynix","Pre-IPO market","SK Hynix Pre-IPO Dashboard","Live tracking for a synthetic SK Hynix pre-IPO perp on Hyperliquid.","https://x.com/favour_D_crier/status/2076520399634899390","goldrush-sh-dashboard","https://github.com/nedsoft057/skhx-dashboard"],
+ ["h3-pro","HIP-3 markets","H3-Pro","A market dashboard for HIP-3: funding, dominance, volume and top movers.","https://x.com/favour_D_crier/status/2070589267194122530","goldrush-h3-pro","https://github.com/nedsoft057/hip3-markets-dashboard-v2"],
+ ["rwa-perps","RWA perps","RWA / Perps Dashboard","A market view of RWA perps activity: winners, losers and volume.","https://x.com/favour_D_crier/status/2077728698963231051","goldrush-rwa-perps","https://github.com/nedsoft057/rwa-perps-dashboard"],
+ ["spacex-research","Onchain research","Who got into tokenized SpaceX?","Wallet-level research on tokenized SpaceX holders across chains.","https://x.com/favour_D_crier/status/2069037906287530262","goldrush-spacex","https://github.com/nedsoft057/spcxx-dashboard"],
+ ["kol-manager","Tool · Orion","KOL Manager Suite","An operations suite for ambassador programs: dashboards for ambassadors and leads, plus team chat.","","kol-manager-02-lead-dashboards","https://github.com/nedsoft057/orion-agents"]];
 const SVC=[
  ["Thread and article writing","Story-first threads and publication-ready long-form for protocols, DAOs and Web3 platforms. Deep research, a clear angle, and prose that reads like a person wrote it, because one did."],
  ["KOL campaign management","End-to-end campaigns, from strategy and sourcing to delivery, with KPIs tied to what matters: volume, narrative adoption and follower growth that holds."],
@@ -493,8 +493,8 @@ const big=$('#big');new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){b
 $$('.bx').forEach(b=>b.addEventListener('pointermove',e=>{const r=b.getBoundingClientRect();b.style.setProperty('--x',e.clientX-r.left+'px');b.style.setProperty('--y',e.clientY-r.top+'px')}));
 /* builds */
 const scr=$('#screen'),steps=$('#steps');
-BUILDS.forEach(([u,k,t,d,l,img],i)=>{const f=document.createElement('div');f.className='fr'+(i?'':' on');f.innerHTML=`<img src="a/${img}.webp" alt="${t}" loading="${i?'lazy':'eager'}">`;scr.append(f);
-  const s=document.createElement('div');s.className='st'+(i?'':' on');s.dataset.i=i;s.innerHTML=`<span class="k">${String(i+1).padStart(2,'0')} · ${k}</span><h3>${t}</h3><p>${d}</p><div class="mimg"><img src="a/${img}.webp" alt="" loading="lazy"></div><a href="${l}" target="_blank" rel="noopener">${l.includes('github')?'View on GitHub':'View the post'} ↗</a>`;steps.append(s)});
+BUILDS.forEach(([u,k,t,d,l,img,gh],i)=>{const f=document.createElement('div');f.className='fr'+(i?'':' on');f.innerHTML=`<img src="a/${img}.webp" alt="${t}" loading="${i?'lazy':'eager'}">`;scr.append(f);
+  const s=document.createElement('div');s.className='st'+(i?'':' on');s.dataset.i=i;s.innerHTML=`<span class="k">${String(i+1).padStart(2,'0')} · ${k}</span><h3>${t}</h3><p>${d}</p><div class="mimg"><img src="a/${img}.webp" alt="" loading="lazy"></div><div class="lk">${l?`<a href="${l}" target="_blank" rel="noopener">View the post ↗</a>`:''}${gh?`<a class="ghl" href="${gh}" target="_blank" rel="noopener" aria-label="${t} on GitHub"><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.06-.49.06-.49.8.06 1.23.83 1.23.83.71 1.22 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2-3.65-.89-3.65-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>GitHub ↗</a>`:''}</div>`;steps.append(s)});
 const frs=$$('#screen .fr'),sts=$$('.st');let bOn=0;
 function builds(){const mid=innerHeight*.5;let best=0,bd=1e9;sts.forEach((s,i)=>{const r=s.getBoundingClientRect();const d=Math.abs(r.top+r.height/2-mid);if(d<bd){bd=d;best=i}});
   if(best!==bOn){bOn=best;frs.forEach((f,i)=>f.classList.toggle('on',i===best));sts.forEach((s,i)=>s.classList.toggle('on',i===best));$('#scUrl').textContent=BUILDS[best][0]}}
